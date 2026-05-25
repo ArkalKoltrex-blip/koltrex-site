@@ -165,6 +165,16 @@ img { max-width: 100%; display: block; }
   width: auto;
 }
 
+.nav__logo-pillar {
+  height: 32px;
+  width: auto;
+}
+
+.nav__logo-wordmark {
+  height: 20px;
+  width: auto;
+}
+
 .nav__links {
   display: none;
   gap: 32px;
