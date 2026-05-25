@@ -15,13 +15,28 @@ linguagens:
   - HTML5 semântico
   - CSS3 vanilla (design system próprio)
   - JavaScript vanilla
-fontes: "Google Fonts — Syne (display) + Inter (body)"
+fontes: "Google Fonts — Outfit (display/UI) + Geist Mono (labels/dados)"
 build: "Nenhum — site estático puro"
 deploy:
   plataforma: "Railway"
-  repositorio: "GitHub (koltrex)"
+  repositorio: "GitHub (ArkalKoltrex-blip/koltrex-site)"
   entrada: "index.html na raiz"
   servidor: "serve (npm)"
+```
+
+## IDENTIDADE VISUAL
+```yaml
+brand_system: "Ver KOLTREX-BRAND.md na raiz — seguir sempre"
+estilo: "Dark tech / SaaS premium — Apple-cool, limpo, técnico"
+paleta:
+  base: "Onyx #0A0A0B (60%) + Mist #ECECEE (30%)"
+  acento_primario: "Voltage #FF2D3A (7%) — botão, destaque, ação"
+  acento_secundario: "Plasma #7C4DFF (3%) — premium, profundidade"
+tipografia:
+  display_ui: "Outfit 600 — letter-spacing -0.045em"
+  labels_dados: "Geist Mono — uppercase, tracking 0.12em"
+logo: "Kˣ — K em Outfit 600 + X como SVG stroke-linecap round"
+proporcao_cor: "60·30·7·3 (Onyx·Mist·Voltage·Plasma)"
 ```
 
 ## SERVIÇOS APRESENTADOS NO SITE
@@ -35,23 +50,6 @@ servicos:
     status: "ativo"
   - nome: "App de Carrosséis"
     status: "em breve"
-```
-
-## DECISÕES DE DESIGN
-```yaml
-estilo: "Dark tech / SaaS premium"
-paleta:
-  fundo: "#ffffff (light) com glow roxo no hero"
-  acento: "#6c3fff (roxo vibrante)"
-  texto: "#0a0a0f"
-tipografia:
-  display: "Syne — bold pesada"
-  corpo: "Inter — leve e legível"
-elementos_visuais:
-  - "Esfera animada com glow no hero"
-  - "Grid bento assimétrico nos serviços"
-  - "Badge de credibilidade"
-  - "Conectores entre os steps de como funciona"
 ```
 
 ## ESTRUTURA DE ARQUIVOS
