@@ -27,6 +27,7 @@ deploy:
 ## IDENTIDADE VISUAL
 ```yaml
 brand_system: "Ver KOLTREX-BRAND.md na raiz — seguir sempre"
+  instagram_guide: "Ver KOLTREX-INSTAGRAM.md na raiz — usar ao criar posts, stories e highlights"
 estilo: "Dark tech / SaaS premium — Apple-cool, limpo, técnico"
 paleta:
   base: "Onyx #0A0A0B (60%) + Mist #ECECEE (30%)"

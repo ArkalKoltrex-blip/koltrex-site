@@ -1,3 +1,18 @@
+// Nav transparente enquanto o hero está visível
+const nav = document.querySelector('.nav');
+function atualizarNav() {
+  if (window.scrollY < window.innerHeight * 0.85) {
+    nav.classList.add('nav--over-hero');
+  } else {
+    nav.classList.remove('nav--over-hero');
+  }
+}
+window.addEventListener('scroll', atualizarNav, { passive: true });
+atualizarNav(); // estado inicial
+
+// Ano dinâmico no footer
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+
 // Menu mobile
 const toggle = document.querySelector('.nav__toggle');
 const mobile = document.querySelector('.nav__mobile');
