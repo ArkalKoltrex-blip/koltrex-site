@@ -1,39 +1,53 @@
 // =====================
-// INTRO / PRELOADER
+// INTRO / PRELOADER — 3 atos
+// Exibida em todo carregamento da página.
 // =====================
 (function () {
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var alreadyShown   = sessionStorage.getItem('koltrex-intro');
-  var intro          = document.getElementById('intro');
-
+  var intro = document.getElementById('intro');
   if (!intro) return;
 
-  if (prefersReduced || alreadyShown) {
+  if (prefersReduced) {
     intro.remove();
     return;
   }
 
-  sessionStorage.setItem('koltrex-intro', '1');
   document.body.classList.add('intro-active');
 
   var letters = intro.querySelectorAll('.intro__letters span');
-  var LETTER_DELAY    = 80;   // ms between each letter
-  var LETTER_DURATION = 350;  // ms — matches CSS transition
-  var HOLD            = 600;  // ms after full name forms
-  var FADE            = 700;  // ms — matches CSS transition
+  var phase1  = intro.querySelector('[data-phase="1"]');
+  var phase2  = intro.querySelector('[data-phase="2"]');
+  var phase3  = intro.querySelector('[data-phase="3"]');
+  var skip    = intro.querySelector('.intro__skip');
+  var timers  = [];
+  var done    = false;
 
-  letters.forEach(function (span, i) {
-    setTimeout(function () { span.classList.add('visible'); }, i * LETTER_DELAY);
-  });
+  function at(t, fn) { timers.push(setTimeout(fn, t)); }
 
-  var exitAt = (letters.length - 1) * LETTER_DELAY + LETTER_DURATION + HOLD;
-
-  setTimeout(function () {
+  function finish() {
+    if (done) return;
+    done = true;
+    timers.forEach(clearTimeout);
     intro.classList.add('intro--exit');
     document.body.classList.remove('intro-active');
-  }, exitAt);
+    setTimeout(function () { intro.remove(); }, 750);
+  }
 
-  setTimeout(function () { intro.remove(); }, exitAt + FADE);
+  // Ato 1 — KOLTREX letra a letra
+  letters.forEach(function (span, i) {
+    at(200 + i * 90, function () { span.classList.add('visible'); });
+  });
+  at(2200, function () { phase1.classList.add('leave'); });
+
+  // Ato 2 — "Soluções Digitais Personalizadas"
+  at(2650, function () { phase2.classList.add('enter'); });
+  at(4500, function () { phase2.classList.add('leave'); });
+
+  // Ato 3 — frase final, depois revela o site
+  at(4950, function () { phase3.classList.add('enter'); });
+  at(7100, finish);
+
+  skip.addEventListener('click', finish);
 })();
 
 // Nav transparente enquanto o hero está visível

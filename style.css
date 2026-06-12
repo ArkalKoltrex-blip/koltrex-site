@@ -914,7 +914,10 @@ img { max-width: 100%; display: block; }
 }
 
 /* =====================
-   INTRO / PRELOADER
+   INTRO / PRELOADER — 3 atos
+   1. KOLTREX letra a letra
+   2. "Soluções Digitais Personalizadas"
+   3. "Dê um salto para outro nível..."
 ===================== */
 body.intro-active { overflow: hidden; }
 
@@ -923,27 +926,31 @@ body.intro-active { overflow: hidden; }
   inset: 0;
   z-index: 9999;
   background: var(--onyx);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.intro__letters {
+/* Cada ato ocupa a tela toda, centralizado, empilhados uns sobre os outros */
+.intro__phase {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
-  gap: 0.02em;
+  justify-content: center;
+  padding: 0 24px;
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
+
+.intro__letters { gap: 0.02em; }
 
 .intro__letters span {
   font-family: 'Outfit', sans-serif;
   font-weight: 800;
-  font-size: clamp(56px, 11vw, 140px);
+  font-size: clamp(48px, 10vw, 130px);
   color: var(--mist);
   letter-spacing: -0.03em;
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(26px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   line-height: 1;
   display: block;
 }
@@ -951,6 +958,73 @@ body.intro-active { overflow: hidden; }
 .intro__letters span.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.intro__phrase {
+  opacity: 0;
+  transform: translateY(22px);
+  text-align: center;
+  margin: 0;
+}
+
+.intro__phrase.enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro__phrase--label {
+  font-family: var(--font-mono);
+  font-size: clamp(13px, 2.2vw, 18px);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+
+.intro__phrase--final {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(22px, 4vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+  color: var(--mist);
+  max-width: 760px;
+}
+
+.intro__phrase--final strong {
+  color: var(--voltage);
+  font-weight: 700;
+}
+
+/* .leave por último — vence .enter na cascata */
+.intro__phase.leave {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.intro__skip {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 100px;
+  color: var(--ash);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.intro__skip:hover {
+  color: var(--mist);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .intro--exit {
