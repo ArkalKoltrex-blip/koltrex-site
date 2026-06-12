@@ -12,6 +12,16 @@
 </head>
 <body>
 
+  <!-- INTRO / PRELOADER — 3 atos -->
+  <div class="intro" id="intro">
+    <div class="intro__letters intro__phase" data-phase="1" aria-hidden="true">
+      <span>K</span><span>O</span><span>L</span><span>T</span><span>R</span><span>E</span><span>X</span>
+    </div>
+    <p class="intro__phrase intro__phrase--label intro__phase" data-phase="2">Soluções Digitais Personalizadas</p>
+    <p class="intro__phrase intro__phrase--final intro__phase" data-phase="3">Dê um salto para outro nível,<br>porque aqui você é <strong>o futuro</strong>.</p>
+    <button class="intro__skip" type="button">Pular intro →</button>
+  </div>
+
   <!-- NAV -->
   <nav class="nav">
     <div class="nav__inner">
@@ -21,6 +31,7 @@
       <ul class="nav__links">
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#faq">Dúvidas</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
       <a href="#contato" class="btn btn--outline nav__cta">Falar agora →</a>
@@ -31,15 +42,27 @@
     <div class="nav__mobile">
       <a href="#servicos">Serviços</a>
       <a href="#como-funciona">Como funciona</a>
+      <a href="#faq">Dúvidas</a>
       <a href="#contato">Contato</a>
       <a href="#contato" class="btn btn--primary">Falar agora →</a>
     </div>
   </nav>
 
-  <!-- HERO 3D -->
+  <!-- HERO -->
   <section class="hero-3d" id="hero">
 
-    <!-- Letras gigantes K O L T R E X — atrás do canvas (z-index: 1) -->
+    <!-- Conteúdo central: label, título, subtítulo e CTAs -->
+    <div class="hero-3d__content">
+      <span class="hero-3d__label">SOLUÇÕES DIGITAIS SOB MEDIDA</span>
+      <h1 class="hero-3d__title">A arquitetura do<br><strong>novo sucesso.</strong></h1>
+      <p class="hero-3d__subtitle">Sites de alta tecnologia, chatbots, automações e qualquer software que sua empresa precisar — desenhado do zero para o seu negócio.</p>
+      <div class="hero-3d__actions">
+        <a href="https://wa.me/5577999751815?text=Olá,%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20os%20serviços%20da%20Koltrex" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Falar no WhatsApp</a>
+        <a href="#servicos" class="btn btn--outline">Ver serviços →</a>
+      </div>
+    </div>
+
+    <!-- Wordmark gigante KOLTREX — centralizado na base, anima ao carregar -->
     <!-- cada .l-wrap tem overflow:hidden para o efeito de "letra subindo" -->
     <div class="hero-3d__letters" aria-hidden="true">
       <div class="l-wrap"><span>K</span></div>
@@ -49,24 +72,6 @@
       <div class="l-wrap"><span>R</span></div>
       <div class="l-wrap"><span>E</span></div>
       <div class="l-wrap"><span>X</span></div>
-    </div>
-
-    <!-- Interface: título centrado, botão à direita, texto lateral -->
-    <div class="hero-3d__ui">
-
-      <!-- Barra superior: título centralizado + botão direito -->
-      <div class="hero-3d__topbar">
-        <div class="hero-3d__top-title">
-          <p>A ARQUITETURA<br>DO NOVO SUCESSO</p>
-        </div>
-        <a href="#contato" class="hero-3d__cta">FALE CONOSCO →</a>
-      </div>
-
-      <!-- Bloco de texto lateral direito (centro da tela) -->
-      <div class="hero-3d__side">
-        <p>SOLUÇÕES DIGITAIS<br>SOB MEDIDA</p>
-      </div>
-
     </div>
   </section>
 
@@ -119,6 +124,45 @@
     </div>
   </section>
 
+  <!-- DEMO CHATBOT -->
+  <section class="section demo-chatbot" id="demo-chatbot">
+    <div class="container">
+      <div class="demo-chatbot__grid">
+
+        <!-- Coluna 1: mockup de chat -->
+        <div class="demo-chatbot__phone">
+          <div class="chat-window">
+            <div class="chat-window__header">
+              <div class="chat-window__avatar">K</div>
+              <div class="chat-window__info">
+                <span class="chat-window__name">Atendente Koltrex</span>
+                <span class="chat-window__status">
+                  <span class="chat-window__dot"></span>online agora
+                </span>
+              </div>
+            </div>
+            <div class="chat-window__body" id="chat-body"></div>
+          </div>
+        </div>
+
+        <!-- Coluna 2: copy -->
+        <div class="demo-chatbot__copy">
+          <span class="badge">DEMONSTRAÇÃO AO VIVO</span>
+          <h2 class="demo-chatbot__title">Isto é um chatbot da Koltrex<br><strong>rodando agora.</strong></h2>
+          <p class="demo-chatbot__desc">Enquanto você lê esta página, um robô como esse pode estar atendendo, qualificando e agendando clientes para a sua empresa — de madrugada, no feriado, no domingo.</p>
+          <ul class="demo-chatbot__list">
+            <li><span class="demo-chatbot__check">✓</span> Responde em segundos</li>
+            <li><span class="demo-chatbot__check">✓</span> Qualifica e envia pro seu WhatsApp</li>
+            <li><span class="demo-chatbot__check">✓</span> Agenda horários e responde dúvidas frequentes</li>
+            <li><span class="demo-chatbot__check">✓</span> Personalizado com a linguagem da sua marca</li>
+          </ul>
+          <a href="#contato" class="btn btn--primary">Quero um chatbot assim →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- COMO FUNCIONA -->
   <section class="section section--dark" id="como-funciona">
     <div class="container">
@@ -148,6 +192,69 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Dúvidas <strong>frequentes</strong></h2>
+        <p class="section__sub">Respostas diretas para as perguntas mais comuns.</p>
+      </div>
+      <div class="faq" role="list">
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-1">
+            <span>Quanto custa um projeto?</span>
+            <svg class="faq__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq__answer" id="faq-answer-1" role="region">
+            <p>Depende do escopo. Após um bate-papo rápido, enviamos uma proposta personalizada em até 24h — sem compromisso e sem surpresas.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-2">
+            <span>Em quanto tempo fica pronto?</span>
+            <svg class="faq__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq__answer" id="faq-answer-2" role="region">
+            <p>Landing pages ficam prontas em poucos dias. Sistemas mais complexos têm prazo definido na proposta, com entregas por etapas para você acompanhar.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-3">
+            <span>Preciso entender de tecnologia?</span>
+            <svg class="faq__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq__answer" id="faq-answer-3" role="region">
+            <p>Não. Entregamos tudo funcionando com orientação simples. Você foca no negócio; a tecnologia fica por nossa conta.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-4">
+            <span>Atendem empresas fora de Vitória da Conquista?</span>
+            <svg class="faq__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq__answer" id="faq-answer-4" role="region">
+            <p>Sim. Nosso processo é 100% online e atendemos clientes em todo o Brasil. A distância não é obstáculo.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" role="listitem">
+          <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-5">
+            <span>E depois da entrega, fico sozinho?</span>
+            <svg class="faq__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq__answer" id="faq-answer-5" role="region">
+            <p>Não. Oferecemos suporte pós-entrega e continuamos evoluindo a solução conforme o seu negócio cresce.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CTA FINAL -->
   <section class="section cta-section" id="contato">
     <div class="cta-section__glow"></div>
@@ -171,6 +278,7 @@
         <p class="footer__copy">© <span id="footer-year">2026</span> Koltrex. Todos os direitos reservados.</p>
         <div class="footer__links">
           <a href="#servicos">Serviços</a>
+          <a href="#faq">Dúvidas</a>
           <a href="#contato">Contato</a>
         </div>
         <div class="footer__brand">

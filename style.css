@@ -311,16 +311,15 @@ img { max-width: 100%; display: block; }
   background: #ffffff; /* branco puro — idêntico ao reference */
 }
 
-/* ── Letras gigantes K O L T R E X ────────────────────────────────────────── */
-/* z-index: 1 → atrás do canvas (z-index: 2), helix 3D fica na frente */
+/* ── Wordmark gigante KOLTREX — centralizado na base ─────────────────────── */
 .hero-3d__letters {
   position: absolute;
-  bottom: -0.06em;
-  left:  -1.5%;
-  right: -1.5%;
+  bottom: -0.04em;
+  left: 0;
+  right: 0;
   z-index: 1;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-end;
   pointer-events: none;
   user-select: none;
@@ -333,102 +332,113 @@ img { max-width: 100%; display: block; }
   line-height: 1;
 }
 
-/* Cada span começa abaixo do clip e sobe ao lugar (efeito "nome se formando") */
+/* Cada span sobe ao lugar na entrada e depois flutua suavemente em loop */
 .l-wrap span {
   display: block;
   font-family: 'Outfit', sans-serif;
   font-weight: 800;
-  font-size: clamp(72px, 13vw, 190px);
+  font-size: clamp(58px, 14.5vw, 210px);
   line-height: 1;
+  letter-spacing: -0.01em;
   color: #0a0a0a;
-  animation: letraSubindo 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation:
+    letraSubindo 1.1s cubic-bezier(0.16, 1, 0.3, 1) both,
+    letraFlutua 4.5s ease-in-out infinite;
 }
 
-/* Stagger: cada letra 90ms depois da anterior */
-.hero-3d__letters .l-wrap:nth-child(1) span { animation-delay: 0.20s; }
-.hero-3d__letters .l-wrap:nth-child(2) span { animation-delay: 0.31s; }
-.hero-3d__letters .l-wrap:nth-child(3) span { animation-delay: 0.42s; }
-.hero-3d__letters .l-wrap:nth-child(4) span { animation-delay: 0.53s; }
-.hero-3d__letters .l-wrap:nth-child(5) span { animation-delay: 0.64s; }
-.hero-3d__letters .l-wrap:nth-child(6) span { animation-delay: 0.75s; }
-.hero-3d__letters .l-wrap:nth-child(7) span { animation-delay: 0.86s; }
+/* Stagger: entrada 110ms entre letras; flutuação defasada 180ms */
+.hero-3d__letters .l-wrap:nth-child(1) span { animation-delay: 0.20s, 1.70s; }
+.hero-3d__letters .l-wrap:nth-child(2) span { animation-delay: 0.31s, 1.88s; }
+.hero-3d__letters .l-wrap:nth-child(3) span { animation-delay: 0.42s, 2.06s; }
+.hero-3d__letters .l-wrap:nth-child(4) span { animation-delay: 0.53s, 2.24s; }
+.hero-3d__letters .l-wrap:nth-child(5) span { animation-delay: 0.64s, 2.42s; }
+.hero-3d__letters .l-wrap:nth-child(6) span { animation-delay: 0.75s, 2.60s; }
+.hero-3d__letters .l-wrap:nth-child(7) span { animation-delay: 0.86s, 2.78s; }
 
 @keyframes letraSubindo {
   from { transform: translateY(110%); }
   to   { transform: translateY(0);    }
 }
 
-/* ── Interface (z-index: 3 — na frente de tudo) ───────────────────────────── */
-.hero-3d__ui {
+@keyframes letraFlutua {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-0.045em); }
+}
+
+/* ── Conteúdo central (z-index: 3 — na frente das letras) ─────────────────── */
+.hero-3d__content {
   position: absolute;
   inset: 0;
   z-index: 3;
-  pointer-events: none;
-}
-
-/* Barra de topo: título centralizado + botão à direita */
-.hero-3d__topbar {
-  position: absolute;
-  top: 28px;                /* abaixo do nav fixo (~85px já conta com padding-top nav) */
-  left: 40px;
-  right: 40px;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  pointer-events: all;
-}
-
-/* Título "A ARQUITETURA / DO NOVO SUCESSO" — centralizado */
-.hero-3d__top-title p {
-  font-family: 'Outfit', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #0a0a0a;
   text-align: center;
+  gap: 22px;
+  /* padding-bottom reserva o espaço do wordmark na base */
+  padding: 110px 24px clamp(140px, 20vw, 280px);
+}
+
+.hero-3d__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.45);
+}
+
+.hero-3d__title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--text-muted);
+}
+.hero-3d__title strong {
+  color: var(--text);
+  font-weight: 800;
+}
+
+.hero-3d__subtitle {
+  font-size: clamp(15px, 1.8vw, 17px);
+  color: var(--ash);
   line-height: 1.7;
+  max-width: 560px;
 }
 
-/* Botão "FALE CONOSCO →" — canto superior direito, borda retangular */
-.hero-3d__cta {
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-family: 'Outfit', sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #0a0a0a;
-  border: 1px solid rgba(10, 10, 10, 0.35);
-  padding: 10px 20px;
-  border-radius: 100px;     /* pílula — igual ao reference */
-  transition: background 0.2s, color 0.2s;
-  white-space: nowrap;
-}
-.hero-3d__cta:hover {
-  background: #0a0a0a;
-  color: #ffffff;
+.hero-3d__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 6px;
 }
 
-/* Bloco de texto lateral direito ("SOLUÇÕES DIGITAIS / SOB MEDIDA") */
-.hero-3d__side {
-  position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
+/* Entrada escalonada do conteúdo */
+.hero-3d__content > * {
+  animation: heroRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-.hero-3d__side p {
-  font-family: 'Outfit', sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(10, 10, 10, 0.5);
-  line-height: 2;
-  text-align: right;
+.hero-3d__content > *:nth-child(1) { animation-delay: 0.25s; }
+.hero-3d__content > *:nth-child(2) { animation-delay: 0.40s; }
+.hero-3d__content > *:nth-child(3) { animation-delay: 0.55s; }
+.hero-3d__content > *:nth-child(4) { animation-delay: 0.70s; }
+
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Pausa as animações do hero enquanto a intro cobre a tela —
+   assim elas só rodam quando ficam visíveis de verdade */
+body.intro-active .hero-3d__letters span,
+body.intro-active .hero-3d__content > * { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-3d__letters span,
+  .hero-3d__content > * { animation: none; }
 }
 
 /* ── Nav sobre o hero: pílula ainda mais sutil ───────────────────────────── */
@@ -440,9 +450,11 @@ img { max-width: 100%; display: block; }
 
 /* ── Mobile ───────────────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .hero-3d__topbar  { left: 20px; right: 20px; }
-  .hero-3d__letters span { font-size: clamp(52px, 13vw, 120px); }
-  .hero-3d__side    { display: none; }
+  .hero-3d__content {
+    gap: 16px;
+    padding: 96px 20px clamp(110px, 24vw, 180px);
+  }
+  .hero-3d__letters .l-wrap span { font-size: clamp(42px, 13.5vw, 110px); }
 }
 
 /* =====================
@@ -911,4 +923,423 @@ img { max-width: 100%; display: block; }
     justify-content: space-between;
     text-align: left;
   }
+}
+
+/* =====================
+   INTRO / PRELOADER — 3 atos
+   1. KOLTREX letra a letra
+   2. "Soluções Digitais Personalizadas"
+   3. "Dê um salto para outro nível..."
+===================== */
+body.intro-active { overflow: hidden; }
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--onyx);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Cada ato ocupa a tela toda, centralizado, empilhados uns sobre os outros */
+.intro__phase {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.intro__letters { gap: 0.02em; }
+
+.intro__letters span {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: clamp(48px, 10vw, 130px);
+  color: var(--mist);
+  letter-spacing: -0.03em;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1;
+  display: block;
+}
+
+.intro__letters span.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro__phrase {
+  opacity: 0;
+  transform: translateY(22px);
+  text-align: center;
+  margin: 0;
+}
+
+.intro__phrase.enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro__phrase--label {
+  font-family: var(--font-mono);
+  font-size: clamp(13px, 2.2vw, 18px);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+
+.intro__phrase--final {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(22px, 4vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+  color: var(--mist);
+  max-width: 760px;
+}
+
+.intro__phrase--final strong {
+  color: var(--voltage);
+  font-weight: 700;
+}
+
+/* .leave por último — vence .enter na cascata */
+.intro__phase.leave {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.intro__skip {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 100px;
+  color: var(--ash);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.intro__skip:hover {
+  color: var(--mist);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.intro--exit {
+  opacity: 0;
+  transform: translateY(-16px);
+  pointer-events: none;
+}
+
+/* =====================
+   DEMO CHATBOT
+===================== */
+.demo-chatbot {
+  background: var(--onyx);
+  color: var(--mist);
+}
+
+.demo-chatbot__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .demo-chatbot__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+.demo-chatbot__phone {
+  display: flex;
+  justify-content: center;
+}
+
+/* Chat window */
+.chat-window {
+  width: 100%;
+  max-width: 340px;
+  background: var(--carbon);
+  border: 1px solid var(--border-dark);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.chat-window__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--graphite);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.chat-window__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--voltage);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chat-window__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chat-window__name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mist);
+}
+
+.chat-window__status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--ash);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.chat-window__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+}
+
+.chat-window__body {
+  padding: 14px 12px;
+  height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  scroll-behavior: smooth;
+}
+
+.chat-window__body::-webkit-scrollbar { width: 0; }
+
+/* Bubbles */
+.chat-bubble {
+  max-width: 84%;
+  padding: 9px 13px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  word-break: break-word;
+}
+
+.chat-bubble.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chat-bubble--bot {
+  background: var(--graphite);
+  border: 1px solid var(--border-dark);
+  color: var(--mist);
+  border-radius: 12px 12px 12px 3px;
+  align-self: flex-start;
+}
+
+.chat-bubble--client {
+  background: var(--voltage);
+  color: #fff;
+  border-radius: 12px 12px 3px 12px;
+  align-self: flex-end;
+}
+
+/* Typing indicator */
+.chat-typing {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 11px 14px;
+  background: var(--graphite);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px 12px 12px 3px;
+  align-self: flex-start;
+  height: 36px;
+}
+
+.chat-typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ash);
+  animation: typingDot 1.2s infinite ease-in-out;
+}
+
+.chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+.chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingDot {
+  0%, 60%, 100% { transform: translateY(0);    opacity: 0.4; }
+  30%            { transform: translateY(-4px); opacity: 1;   }
+}
+
+/* Copy column */
+.demo-chatbot__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.demo-chatbot__title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.2vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--silver);
+  line-height: 1.2;
+}
+
+.demo-chatbot__title strong {
+  color: var(--mist);
+  font-weight: 800;
+}
+
+.demo-chatbot__desc {
+  font-size: 15px;
+  color: var(--silver);
+  line-height: 1.7;
+}
+
+.demo-chatbot__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.demo-chatbot__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--silver);
+  line-height: 1.5;
+}
+
+.demo-chatbot__check {
+  color: var(--voltage);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* =====================
+   FAQ ACCORDION
+===================== */
+.faq {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq__item {
+  border: 1px solid var(--border);
+  border-radius: 0;
+  overflow: hidden;
+  margin-bottom: -1px;
+}
+
+.faq__item:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+.faq__item:last-child  { border-radius: 0 0 var(--radius) var(--radius); margin-bottom: 0; }
+
+.faq__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--bg-card);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  transition: background 0.18s, color 0.18s;
+}
+
+@media (max-width: 480px) {
+  .faq__question { font-size: 15px; padding: 16px 18px; }
+}
+
+.faq__question:hover {
+  background: var(--paper);
+}
+
+.faq__question[aria-expanded="true"] {
+  color: var(--accent);
+}
+
+.faq__icon {
+  flex-shrink: 0;
+  color: var(--ash);
+  transition: transform 0.25s ease;
+}
+
+.faq__question[aria-expanded="true"] .faq__icon {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+.faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.32s ease;
+  background: var(--bg-card);
+}
+
+.faq__answer.open {
+  max-height: 220px;
+}
+
+.faq__answer p {
+  padding: 0 24px 20px;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+@media (max-width: 480px) {
+  .faq__answer p { padding: 12px 18px 18px; }
 }
