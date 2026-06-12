@@ -205,6 +205,33 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
+// =====================
+// FAQ ACCORDION
+// =====================
+(function () {
+  var questions = document.querySelectorAll('.faq__question');
+
+  questions.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      var answer = document.getElementById(btn.getAttribute('aria-controls'));
+
+      // close all
+      questions.forEach(function (b) {
+        b.setAttribute('aria-expanded', 'false');
+        var a = document.getElementById(b.getAttribute('aria-controls'));
+        if (a) a.classList.remove('open');
+      });
+
+      // open clicked (if it was closed)
+      if (!isOpen && answer) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.classList.add('open');
+      }
+    });
+  });
+})();
+
 document.querySelectorAll('.bento__card, .step, .metric').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
