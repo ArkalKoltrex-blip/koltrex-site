@@ -1,3 +1,41 @@
+// =====================
+// INTRO / PRELOADER
+// =====================
+(function () {
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var alreadyShown   = sessionStorage.getItem('koltrex-intro');
+  var intro          = document.getElementById('intro');
+
+  if (!intro) return;
+
+  if (prefersReduced || alreadyShown) {
+    intro.remove();
+    return;
+  }
+
+  sessionStorage.setItem('koltrex-intro', '1');
+  document.body.classList.add('intro-active');
+
+  var letters = intro.querySelectorAll('.intro__letters span');
+  var LETTER_DELAY    = 80;   // ms between each letter
+  var LETTER_DURATION = 350;  // ms — matches CSS transition
+  var HOLD            = 600;  // ms after full name forms
+  var FADE            = 700;  // ms — matches CSS transition
+
+  letters.forEach(function (span, i) {
+    setTimeout(function () { span.classList.add('visible'); }, i * LETTER_DELAY);
+  });
+
+  var exitAt = (letters.length - 1) * LETTER_DELAY + LETTER_DURATION + HOLD;
+
+  setTimeout(function () {
+    intro.classList.add('intro--exit');
+    document.body.classList.remove('intro-active');
+  }, exitAt);
+
+  setTimeout(function () { intro.remove(); }, exitAt + FADE);
+})();
+
 // Nav transparente enquanto o hero está visível
 const nav = document.querySelector('.nav');
 function atualizarNav() {
