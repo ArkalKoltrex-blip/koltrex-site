@@ -18,6 +18,7 @@
   var phase1  = intro.querySelector('[data-phase="1"]');
   var phase2  = intro.querySelector('[data-phase="2"]');
   var phase3  = intro.querySelector('[data-phase="3"]');
+  var phase4  = intro.querySelector('[data-phase="4"]');
   var skip    = intro.querySelector('.intro__skip');
   var timers  = [];
   var done    = false;
@@ -43,9 +44,13 @@
   at(2650, function () { phase2.classList.add('enter'); });
   at(4500, function () { phase2.classList.add('leave'); });
 
-  // Ato 3 — frase final, depois revela o site
+  // Ato 3 — "Dê um salto para outro nível"
   at(4950, function () { phase3.classList.add('enter'); });
-  at(7100, finish);
+  at(6800, function () { phase3.classList.add('leave'); });
+
+  // Ato 4 — frase final com "o futuro" em vermelho, depois revela o site
+  at(7250, function () { phase4.classList.add('enter'); });
+  at(9400, finish);
 
   skip.addEventListener('click', finish);
 })();
