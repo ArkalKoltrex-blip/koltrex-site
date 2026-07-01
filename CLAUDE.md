@@ -18,7 +18,8 @@ linguagens:
 fontes: "Google Fonts — Outfit (display/UI) + Geist Mono (labels/dados)"
 build: "Nenhum — site estático puro"
 deploy:
-  plataforma: "Railway"
+  plataforma: "Vercel"
+  url: "https://koltrex.vercel.app/"
   repositorio: "GitHub (ArkalKoltrex-blip/koltrex-site)"
   entrada: "index.html na raiz"
   servidor: "serve (npm)"
