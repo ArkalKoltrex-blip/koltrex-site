@@ -1,4 +1,4 @@
-﻿---
+---
 name: abrir
 description: >
   Abre uma sessão de trabalho carregando a memória do negócio (empresa, preferências, estratégia, identidade)
@@ -16,6 +16,7 @@ Curto e direto. O objetivo é carregar contexto e devolver uma síntese de uma f
    - `_memoria/empresa.md`
    - `_memoria/preferencias.md`
    - `_memoria/estrategia.md`
+   - `_memoria/tarefas.md` (lista de pendências)
    - `identidade/design-guide.md` (só pra saber se está preenchido ou em branco)
 
 2. Se algum dos três primeiros estiver em branco (placeholder), responder:
@@ -29,8 +30,13 @@ Curto e direto. O objetivo é carregar contexto e devolver uma síntese de uma f
 Foco atual: [prioridade da estratégia, em uma frase]
 Tom: [resumo de 3-4 palavras do tom de voz]
 
+Pendências de hoje:
+- [até 3 tarefas não-marcadas das seções "Hoje" e "Esta semana" do tarefas.md]
+
 Pronto. O que vamos fazer?
 ```
+
+   Se `tarefas.md` não existir ou não tiver pendências, omitir o bloco "Pendências de hoje".
 
 4. Não listar quais arquivos foram lidos. Não confirmar leitura. Só usar o contexto.
 

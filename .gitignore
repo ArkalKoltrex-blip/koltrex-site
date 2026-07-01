@@ -3,3 +3,6 @@ node_modules/
 *.log
 
 .vercel
+
+# Arquivos de lock temporarios do Excel
+~$*.xlsx

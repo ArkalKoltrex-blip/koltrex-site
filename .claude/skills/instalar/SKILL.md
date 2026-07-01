@@ -1,4 +1,4 @@
-﻿---
+---
 name: instalar
 description: >
   Instala o ArkhTrex Framework no negócio do usuário. Entrevista sobre empresa, tom de voz,

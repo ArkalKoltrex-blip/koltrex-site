@@ -162,8 +162,8 @@ koltrex/
 ├── docs/visual/        ← referências e animações
 │
 ├── CLAUDE.md           ← este arquivo (framework + contexto)
-├── .claude/skills/     ← 16 skills do ArkhTrex (/carrossel, /seo, etc.)
-├── _memoria/           ← empresa, estrategia, preferencias, briefing
+├── .claude/skills/     ← 17 skills do ArkhTrex (/carrossel, /seo, /prospectar, etc.)
+├── _memoria/           ← empresa, estrategia, preferencias, briefing, tarefas
 ├── identidade/         ← design-guide + KOLTREX-BRAND + KOLTREX-INSTAGRAM
 └── dados/ marketing/ saidas/ scripts/   ← saídas geradas pelo framework
 ```
