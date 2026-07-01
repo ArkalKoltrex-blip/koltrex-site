@@ -1283,6 +1283,125 @@ body.intro-active { overflow: hidden; }
 }
 
 /* =====================
+   PRICING
+===================== */
+.pricing-section {
+  background: var(--onyx);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pricing-card--highlight {
+  border-color: var(--voltage);
+  box-shadow: 0 0 48px rgba(255, 45, 58, 0.28);
+}
+
+.pricing-card__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.pricing-card--highlight .pricing-card__label {
+  color: var(--voltage);
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: var(--voltage);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.pricing-card__price {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+.pricing-card__currency {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.pricing-card__amount {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  line-height: 1;
+}
+
+.pricing-card__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 20px;
+}
+
+.pricing-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.pricing-card__features li {
+  font-size: 15px;
+  color: var(--text-muted);
+  padding-left: 20px;
+  position: relative;
+}
+
+.pricing-card__features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--voltage);
+  font-weight: 700;
+}
+
+.pricing-card__cta {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+/* =====================
    FAQ ACCORDION
 ===================== */
 .faq {
