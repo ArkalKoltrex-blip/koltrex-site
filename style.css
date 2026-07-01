@@ -1285,6 +1285,10 @@ body.intro-active { overflow: hidden; }
 /* =====================
    PRICING
 ===================== */
+.pricing-section {
+  background: var(--onyx);
+}
+
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1306,7 +1310,7 @@ body.intro-active { overflow: hidden; }
 
 .pricing-card--highlight {
   border-color: var(--voltage);
-  box-shadow: 0 0 32px rgba(255, 45, 58, 0.1);
+  box-shadow: 0 0 48px rgba(255, 45, 58, 0.28);
 }
 
 .pricing-card__label {
